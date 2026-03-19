@@ -14,7 +14,8 @@
     "expo": "~55.0.6",
     "expo-status-bar": "~55.0.4",
     "react": "19.2.0",
-    "react-native": "0.83.2"
+    "react-native": "0.83.2",
+    "undefined": "@expo/vector-icons/FontAwesome5"
   },
   "devDependencies": {
     "@types/react": "~19.2.2",
