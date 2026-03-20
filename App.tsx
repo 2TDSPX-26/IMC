@@ -9,13 +9,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
   Home: undefined;
-  Result: undefined;
-  //  {
-  //   name: string;
-  //   gender: 'male' | 'female';
-  //   weight: number;
-  //   height: number;
-  // };
+  Result: {
+    name: string;
+    gender: 'male' | 'female';
+    weight: number;
+    height: number;
+  };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
