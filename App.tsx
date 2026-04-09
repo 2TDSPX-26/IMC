@@ -6,6 +6,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import ResultScreen from './src/screens/ResultScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import TipsScreen from './src/screens/TipsScreen';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -15,6 +16,10 @@ export type RootStackParamList = {
     weight: number;
     height: number;
   };
+  Tips: {
+    imc: number;
+    classification: string;
+  }
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -43,6 +48,17 @@ export default function App() {
             headerTitle: '',
             headerBackTitle: '',
             headerShadowVisible: false,
+          }}
+        />
+        <Stack.Screen
+          name='Tips'
+          component={TipsScreen}
+          options={{
+            headerShown: true,
+            headerTitle: '',
+            headerBackTitle: '',
+            headerShadowVisible: false,
+            headerStyle: { backgroundColor: '#FFF5E6' }
           }}
         />
       </Stack.Navigator>
