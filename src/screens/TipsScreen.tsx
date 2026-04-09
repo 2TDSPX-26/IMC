@@ -1,9 +1,10 @@
 import { View, StyleSheet, ScrollView, Text } from "react-native"
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../App';
 import TipCard from "../components/TipCard";
+
+import { Ionicons, MaterialCommunityIcons, FontAwesome5} from '@expo/vector-icons';
 
 const tips = [
     {
@@ -14,27 +15,27 @@ const tips = [
     },
     {
         id: 2,
-        title: 'Hidratação',
-        description: 'Beba água ao longo do dia para ajudar no bom funcionamento do organismo.',
-        icon: <Ionicons name='water-outline' size={28} color='#F0A91F' />,
+        title: 'Alimentação equilibrada',
+        description: 'Prefira alimentos naturais e evite excesso de produtos ultraprocessados.',
+        icon: <MaterialCommunityIcons name='food-apple-outline' size={28} color='#F0A91F' />,
     },
     {
         id: 3,
-        title: 'Hidratação',
-        description: 'Beba água ao longo do dia para ajudar no bom funcionamento do organismo.',
-        icon: <Ionicons name='water-outline' size={28} color='#F0A91F' />,
+        title: 'Atividade física',
+        description: 'Procure praticar exercícios regularmente, com orientação adequada.',
+        icon: <FontAwesome5 name="dumbbell" size={24} color="#F0A81F" />,
     },
     {
         id: 4,
-        title: 'Hidratação',
-        description: 'Beba água ao longo do dia para ajudar no bom funcionamento do organismo.',
-        icon: <Ionicons name='water-outline' size={28} color='#F0A91F' />,
+        title: 'Sono de qualidade',
+        description: 'Dormir bem ajuda no equilíbrio do corpo e na manutenção da saúde.',
+        icon: <Ionicons name='moon-outline' size={28} color='#F0A91F' />,
     },
     {
         id: 5,
-        title: 'Hidratação',
-        description: 'Beba água ao longo do dia para ajudar no bom funcionamento do organismo.',
-        icon: <Ionicons name='water-outline' size={28} color='#F0A91F' />,
+        title: 'Acompanhamento profissional',
+        description: 'Sempre que possível, consulte médico ou nutricionista para orientações personalizadas.',
+        icon: <Ionicons name='medkit-outline' size={28} color='#F0A91F' />,
     },
 ]
 
@@ -62,7 +63,7 @@ export default function TipsScreen({ navigation, route }: TipsScreenProps) {
                     <Text style={styles.resultText}>{classification}</Text>
                 </View>
 
-                <Text>Hábitos recomendados</Text>
+                <Text style={styles.sectionTitle}>Hábitos recomendados</Text>
 
                 {tips.map(item => (
                     <TipCard key={item.id} tip={item}/>
@@ -74,6 +75,12 @@ export default function TipsScreen({ navigation, route }: TipsScreenProps) {
 }
 
 const styles = StyleSheet.create({
+    sectionTitle: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 14,
+    },
     safeArea: {
         flex: 1,
         backgroundColor: '#FFF5E6',

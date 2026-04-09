@@ -64,6 +64,8 @@ export default function ResultScreen({ navigation, route }: ResultScreenProps) {
           O resultado do IMC é: <Text style={styles.resultValue}>{imc.toFixed(2)}</Text>
         </Text>
 
+        <Text style={styles.classification}>{classification}</Text>
+
         <View style={styles.buttonContainer} >
           <ActionButton
             title='Recalcular IMC'
@@ -83,6 +85,13 @@ export default function ResultScreen({ navigation, route }: ResultScreenProps) {
 }
 
 const styles = StyleSheet.create({
+  classification: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: '#F5A623',
+    marginBottom: 30,
+    textAlign: 'center',
+  },
   tipsButton: {
     flexDirection: 'row',
     marginVertical: 26,
