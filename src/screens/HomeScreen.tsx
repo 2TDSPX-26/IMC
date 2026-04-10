@@ -5,6 +5,9 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import MeasureAdjuster from '../components/MeasureAdjuster';
 import ActionButton from '../components/ActionButton';
+import { useTheme } from '../theme/ThemeProvider';
+import { themes } from '../theme/theme';
+
 
 type HomeScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'Home'>
@@ -14,6 +17,8 @@ const MALE_DEFAULT = require('../../assets/images/Male3.png')
 const FEMALE_DEFAULT = require('../../assets/images/Female3.png')
 
 export default function HomeScreen({ navigation }: HomeScreenProps) {
+  const theme = useTheme()
+  const styles = createStyles(theme)
 
   const [name, setName] = useState('')
   const [gender, setGender] = useState<'male' | 'female'>('male')
@@ -36,10 +41,10 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
       <Text style={styles.title}>Calculadora de IMC</Text>
 
       <View style={styles.inputContainer}>
-        <FontAwesome5 name="user-alt" size={18} color="#333" style={styles.inputIcon} />
+        <FontAwesome5 name="user-alt" size={18} color={theme.colors.text} style={styles.inputIcon} />
         <TextInput
           placeholder='Digite seu nome'
-          placeholderTextColor="#CCC"
+          placeholderTextColor={theme.colors.textPlaceholder}
           value={name}
           onChangeText={setName}
         />
@@ -93,7 +98,8 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
   );
 }
 
-const styles = StyleSheet.create({
+// const styles = StyleSheet.create({
+const createStyles = (theme: (typeof themes)['light'] ) => StyleSheet.create({
   buttonContainer: {
     width: '100%',
     marginTop: 10,
@@ -107,7 +113,7 @@ const styles = StyleSheet.create({
   },
   genderText: {
     fontSize: 18,
-    color: "#F5A623",
+    color: theme.colors.primary,
     fontWeight: '400',
   },
   genderRow: {
@@ -129,18 +135,18 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     fontSize: 16,
-    color: '#333'
+    color: theme.colors.text
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.backgroundSecondary,
     borderRadius: 12,
     paddingHorizontal: 14,
     paddingVertical: 12,
     width: '100%',
     marginBottom: 20,
-    shadowColor: '#000',
+    shadowColor: theme.colors.shadow,
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.5,
     shadowRadius: 3,
@@ -149,12 +155,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#333',
+    color: theme.colors.text,
     marginBottom: 20,
   },
   container: {
     flex: 1,
-    backgroundColor: '#FFF5E6',
+    backgroundColor: theme.colors.background,
     alignItems: 'center',
     paddingHorizontal: 24,
     paddingTop: 60,
